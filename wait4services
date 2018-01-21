@@ -1,0 +1,34 @@
+#!/usr/bin/env php
+<?php
+
+if (!ini_get('date.timezone')) {
+    ini_set('date.timezone', 'UTC');
+}
+
+set_error_handler(function ($severity, $message, $file = null, $line = null) {
+    if ($severity & error_reporting()) {
+        throw new ErrorException($message, 0, $severity, $file, $line);
+    }
+});
+
+foreach ([__DIR__ . '/../../autoload.php', __DIR__ . '/../vendor/autoload.php', __DIR__ . '/vendor/autoload.php'] as $file) {
+    if (file_exists($file)) {
+        define('WAIT4SERVICES_AUTOLOAD', $file);
+        unset($file);
+        break;
+    }
+}
+
+if (!defined('WAIT4SERVICES_AUTOLOAD')) {
+    fwrite(STDERR, "Composer autoloader not found.\n");
+    exit(1);
+}
+
+require_once WAIT4SERVICES_AUTOLOAD;
+
+$app = new \Symfony\Component\Console\Application();
+$app->setName('wait4services');
+$app->addCommands([
+    new \uuf6429\WFS\Command\CheckCommand()
+]);
+$app->run();

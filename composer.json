@@ -1,0 +1,15 @@
+{
+  "name": "uuf6429/wait4services",
+  "description": "Small tool that waits until services are online.",
+  "minimum-stability": "stable",
+  "license": "MIT",
+  "require": {
+    "symfony/console": "^3.3"
+  },
+  "autoload": {
+    "psr-4": {
+      "uuf6429\\WFS\\": "src"
+    }
+  },
+  "bin": ["wait4services"]
+}
