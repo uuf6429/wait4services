@@ -27,7 +27,7 @@ class DSNCheck
     private $lastError;
 
     /**
-     * @var bool
+     * @var null|bool
      */
     private $successful = false;
 
@@ -56,6 +56,14 @@ class DSNCheck
     public function getLastError()
     {
         return $this->lastError;
+    }
+
+    /**
+     * @return Handler
+     */
+    public function getHandler()
+    {
+        return $this->handler;
     }
 
     /**

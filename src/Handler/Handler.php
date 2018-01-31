@@ -19,6 +19,14 @@ interface Handler
     public function getExamples();
 
     /**
+     * Returns a list of composer packages required or useful for this handler.
+     * The array key is the package, whereas the value is a reason for the suggestions.
+     *
+     * @return array
+     */
+    public function getSuggestions();
+
+    /**
      * Returns whether the specified DSN is supported by this handler or not.
      *
      * @param string $dsn

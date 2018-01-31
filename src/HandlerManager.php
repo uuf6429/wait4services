@@ -25,7 +25,7 @@ class HandlerManager
      */
     public static function getInstance()
     {
-        return self::$instance ? self::$instance : (self::$instance = new self());
+        return self::$instance ?: (self::$instance = new self());
     }
 
     /**
@@ -35,7 +35,7 @@ class HandlerManager
      */
     public function register($handler)
     {
-        if ( ! is_array($handler)) {
+        if (!is_array($handler)) {
             $handler = [$handler];
         }
 

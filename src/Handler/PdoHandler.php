@@ -2,21 +2,24 @@
 
 namespace uuf6429\WFS\Handler;
 
-class PdoHandler implements Handler
+class PdoHandler extends BaseHandler
 {
-    /** @var string[] */
+    /**
+     * @var string[]
+     */
     private $drivers;
 
+    /**
+     * @inheritdoc
+     */
     public function __construct()
     {
-        $this->drivers = class_exists('\PDO') ? \PDO::getAvailableDrivers() : [];
+        $this->drivers = class_exists(\PDO::class) ? \PDO::getAvailableDrivers() : [];
     }
 
-    public function getName()
-    {
-        return 'PDO';
-    }
-
+    /**
+     * @inheritdoc
+     */
     public function getExamples()
     {
         return array_map(
@@ -27,13 +30,27 @@ class PdoHandler implements Handler
         );
     }
 
+    /**
+     * @inheritdoc
+     */
+    public function getSuggestions()
+    {
+        return ['ext-pdo_*' => 'Required for ' . $this->getName() . ' to function.'];
+    }
+
+    /**
+     * @inheritdoc
+     */
     public function supports($dsn)
     {
         $scheme = explode('-', parse_url($dsn, PHP_URL_SCHEME), 2) + [''];
 
-        return $scheme[0] == 'pdo' && in_array($scheme[1], $this->drivers);
+        return $scheme[0] === 'pdo' && in_array($scheme[1], $this->drivers, true);
     }
 
+    /**
+     * @inheritdoc
+     */
     public function createCheckFunc($dsn)
     {
         $parts = parse_url($dsn);

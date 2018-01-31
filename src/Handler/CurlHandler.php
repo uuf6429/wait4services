@@ -2,13 +2,11 @@
 
 namespace uuf6429\WFS\Handler;
 
-class CurlHandler implements Handler
+class CurlHandler extends BaseHandler
 {
-    public function getName()
-    {
-        return 'CurlHandler';
-    }
-
+    /**
+     * @inheritdoc
+     */
     public function getExamples()
     {
         return [
@@ -17,13 +15,27 @@ class CurlHandler implements Handler
         ];
     }
 
+    /**
+     * @inheritdoc
+     */
+    public function getSuggestions()
+    {
+        return ['ext-curl' => 'Required for ' . $this->getName() . ' to function.'];
+    }
+
+    /**
+     * @inheritdoc
+     */
     public function supports($dsn)
     {
         return function_exists('curl_init')
-            ? in_array(parse_url($dsn, PHP_URL_SCHEME), ['http', 'https'])
+            ? in_array(parse_url($dsn, PHP_URL_SCHEME), ['http', 'https'], true)
             : [];
     }
 
+    /**
+     * @inheritdoc
+     */
     public function createCheckFunc($dsn)
     {
         return function () use ($dsn) {
@@ -34,7 +46,6 @@ class CurlHandler implements Handler
                 curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
                 curl_setopt($ch, CURLOPT_USERAGENT, 'Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko)');
                 curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
-                curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
 
                 $response = curl_exec($ch);
 

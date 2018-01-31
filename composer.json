@@ -1,15 +1,29 @@
 {
-  "name": "uuf6429/wait4services",
-  "description": "Small tool that waits until services are online.",
-  "minimum-stability": "stable",
-  "license": "MIT",
-  "require": {
-    "symfony/console": "^3.3"
-  },
-  "autoload": {
-    "psr-4": {
-      "uuf6429\\WFS\\": "src"
+    "name": "uuf6429/wait4services",
+    "description": "Small tool that waits until services are online.",
+    "minimum-stability": "stable",
+    "license": "MIT",
+    "require": {
+        "symfony/console": "^3.3"
+    },
+    "autoload": {
+        "psr-4": {
+            "uuf6429\\WFS\\": "src"
+        }
+    },
+    "bin": [
+        "wait4services"
+    ],
+    "suggest": {
+        "ext-curl": "Required for CurlHandler to function.",
+        "ext-pdo_*": "Required for PDO to function."
+    },
+    "scripts": {
+        "suggestions": "@php contrib/update-suggestions.php",
+        "documentation": "@php contrib/update-documentation.php"
+    },
+    "scripts-descriptions": {
+        "suggestions": "Updates suggested extensions in composer.json",
+        "documentation": "Updates list of available handlers inside README.md"
     }
-  },
-  "bin": ["wait4services"]
 }

@@ -24,6 +24,7 @@ if (!defined('WAIT4SERVICES_AUTOLOAD')) {
     exit(1);
 }
 
+/** @noinspection PhpIncludeInspection */
 require_once WAIT4SERVICES_AUTOLOAD;
 
 $app = new \Symfony\Component\Console\Application();
