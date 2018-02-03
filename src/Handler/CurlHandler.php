@@ -29,8 +29,11 @@ class CurlHandler extends BaseHandler
     public function supports($dsn)
     {
         return function_exists('curl_init')
-            ? in_array(parse_url($dsn, PHP_URL_SCHEME), ['http', 'https'], true)
-            : [];
+            && in_array(
+                parse_url($dsn, PHP_URL_SCHEME),
+                ['http', 'https', 'ftp', 'gopher', 'telnet', 'dict', 'file', 'ldap'],
+                true
+            );
     }
 
     /**

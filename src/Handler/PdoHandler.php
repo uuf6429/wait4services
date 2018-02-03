@@ -45,7 +45,8 @@ class PdoHandler extends BaseHandler
     {
         $scheme = explode('-', parse_url($dsn, PHP_URL_SCHEME), 2) + [''];
 
-        return $scheme[0] === 'pdo' && in_array($scheme[1], $this->drivers, true);
+        return $scheme[0] === 'pdo'
+            && in_array($scheme[1], $this->drivers, true);
     }
 
     /**
