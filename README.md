@@ -1,8 +1,15 @@
 # wait4services
 
-![screenshot](https://i.imgur.com/G8AQk02.png)
+[![build status](https://travis-ci.org/uuf6429/wait4services.svg?branch=master)](https://travis-ci.org/uuf6429/wait4services)
+[![coverage report](https://codecov.io/gh/uuf6429/wait4services/branch/master/graph/badge.svg)](https://codecov.io/gh/uuf6429/wait4services/branch/master/)
+[![Minimum PHP Version](https://img.shields.io/packagist/php-v/uuf6429/wait4services.svg)](https://php.net/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/uuf6429/wait4services/blob/master/LICENSE)
+[![Packagist](https://img.shields.io/packagist/v/uuf6429/wait4services.svg)](https://packagist.org/packages/uuf6429/wait4services)
+[![Dependency Status](https://beta.gemnasium.com/badges/github.com/uuf6429/wait4services.svg)](https://beta.gemnasium.com/projects/github.com/uuf6429/wait4services)
 
 A simple tool for waiting until all required services are up and running.
+
+![screenshot](https://i.imgur.com/G8AQk02.png)
 
 ## Installation
 
