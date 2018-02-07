@@ -73,11 +73,13 @@ class CheckCommand extends Command
         $dsnChecks = array_map(
             function ($dsn) {
                 /** @var Handler[] $supported */
-                $supported = array_filter(
-                    HandlerManager::getInstance()->getHandlers(),
-                    function (Handler $handler) use ($dsn) {
-                        return $handler->supports($dsn);
-                    }
+                $supported = array_values(
+                    array_filter(
+                        HandlerManager::getInstance()->getHandlers(),
+                        function (Handler $handler) use ($dsn) {
+                            return $handler->supports($dsn);
+                        }
+                    )
                 );
 
                 switch(count($supported)){
