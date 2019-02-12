@@ -5,7 +5,6 @@
 [![Minimum PHP Version](https://img.shields.io/packagist/php-v/uuf6429/wait4services.svg)](https://php.net/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/uuf6429/wait4services/blob/master/LICENSE)
 [![Packagist](https://img.shields.io/packagist/v/uuf6429/wait4services.svg)](https://packagist.org/packages/uuf6429/wait4services)
-[![Dependency Status](https://beta.gemnasium.com/badges/github.com/uuf6429/wait4services.svg)](https://beta.gemnasium.com/projects/github.com/uuf6429/wait4services)
 
 A simple tool for waiting until all required services are up and running.
 
